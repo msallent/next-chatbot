@@ -17,7 +17,12 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className="h-full">
-      <body className={classNames('h-full bg-neutral-900 text-white', inter.className)}>
+      <body
+        className={classNames(
+          'h-full bg-neutral-900 text-white md:max-w-3xl md:mx-auto',
+          inter.className
+        )}
+      >
         {children}
       </body>
     </html>
