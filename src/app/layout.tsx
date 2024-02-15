@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import classNames from 'classnames';
 import '@/styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -16,7 +17,9 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className="h-full">
-      <body className={`h-full bg-neutral-900 text-white ${inter.className}`}>{children}</body>
+      <body className={classNames('h-full bg-neutral-900 text-white', inter.className)}>
+        {children}
+      </body>
     </html>
   );
 }
