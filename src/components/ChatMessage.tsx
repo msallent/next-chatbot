@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ChatSessionMessage } from '@/types/chat-session';
+import type { ChatSessionMessage } from '@/types/chat-session';
 
 const chatRoleLabels: Record<ChatSessionMessage['role'], string> = {
   assistant: 'Assistant',
