@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, KeyboardEvent, useRef } from 'react';
 import TextArea from 'react-textarea-autosize';
 import SpinnerSVG from '@/assets/spinner.svg';
 import SendSVG from '@/assets/send.svg';
@@ -11,8 +11,21 @@ type ChatBoxProps = {
 };
 
 export function ChatBox({ message, isLoading, onChange, onSubmit }: ChatBoxProps) {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  function onKeyDown(event: KeyboardEvent<HTMLTextAreaElement>) {
+    if (event.code === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+
+      if (formRef.current && message.length > 0) {
+        formRef.current.requestSubmit();
+      }
+    }
+  }
+
   return (
     <form
+      ref={formRef}
       onSubmit={onSubmit}
       className="w-full flex items-center justify-between gap-4 p-4 border rounded-md border-neutral-800 bg-neutral-950"
     >
@@ -26,6 +39,7 @@ export function ChatBox({ message, isLoading, onChange, onSubmit }: ChatBoxProps
           name="message"
           value={message}
           onChange={(event) => onChange(event.target.value)}
+          onKeyDown={onKeyDown}
           placeholder="Say something..."
           className="grow bg-transparent resize-none outline-none placeholder:text-white/35"
         />
