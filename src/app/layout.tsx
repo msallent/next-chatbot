@@ -15,8 +15,8 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      <body className={`bg-neutral-900 text-white ${inter.className}`}>{children}</body>
+    <html lang="en" className="h-full">
+      <body className={`h-full bg-neutral-900 text-white ${inter.className}`}>{children}</body>
     </html>
   );
 }
