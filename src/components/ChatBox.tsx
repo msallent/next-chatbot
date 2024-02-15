@@ -17,7 +17,7 @@ export function ChatBox({ message, isLoading, onChange, onSubmit }: ChatBoxProps
       className="w-full flex items-center justify-between gap-4 p-4 border rounded-md border-neutral-800 bg-neutral-950"
     >
       {isLoading ? (
-        <SpinnerSVG className="w-6 h-6 text-gray-600 animate-spin fill-primary" />
+        <SpinnerSVG className="w-6 h-6 text-gray-600 animate-spin fill-[#00BF6F]" />
       ) : (
         <TextArea
           autoFocus
