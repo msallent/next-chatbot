@@ -12,6 +12,8 @@ OPENAI_API_KEY=
 
 Either docker-compose or Vercel Postgres can be used locally to set up the database.
 
+**WARNING**: If modifying the `schema.prisma` file to change the datasource, the `npx prisma generate` command needs to be ran again so that Prisma loads the corresponding env variables.
+
 - With docker-compose:
 
 ```bash
