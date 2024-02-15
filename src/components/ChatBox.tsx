@@ -31,7 +31,8 @@ export function ChatBox({ message, isLoading, onChange, onSubmit }: ChatBoxProps
         />
       )}
       <button disabled={isLoading || message.length === 0} className="[&>svg]:disabled:opacity-35">
-        <SendSVG className="w-6 h-6 fill-white" />
+        <SendSVG aria-hidden="true" className="w-6 h-6 fill-white" />
+        <span className="sr-only">Submit</span>
       </button>
     </form>
   );
