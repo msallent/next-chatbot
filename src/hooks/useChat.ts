@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react';
-import { ChatSessionMessage } from '@/types/chat-session';
+import type { ChatSessionMessage } from '@/types/chat-session';
 
 export function useChat() {
   const [isLoading, setIsLoading] = useState(false);
@@ -46,7 +46,7 @@ export function useChat() {
       });
 
       const data = await response.json();
-      setMessages(data.messages);
+      setMessages(data.messages || []);
     } catch (error) {
       console.error(error);
     }
