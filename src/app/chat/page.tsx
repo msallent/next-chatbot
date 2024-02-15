@@ -1,25 +1,19 @@
-'use client';
-
-import { ChatBox } from '@/components/ChatBox';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 import { ChatHeader } from '@/components/ChatHeader';
-import { ChatView } from '@/components/ChatView';
-import { useChat } from '@/hooks/useChat';
+import { ChatContainer } from '@/components/ChatContainer';
 
 export default function Chat() {
-  const { message, messages, isLoading, handleChange, handleSubmit } = useChat();
+  const userId = cookies().get('userId');
+
+  if (!userId?.value) {
+    redirect('/');
+  }
 
   return (
     <main className="h-full flex flex-col items-center justify-end gap-4 p-4">
       <ChatHeader page="chat" />
-
-      <ChatView messages={messages} />
-
-      <ChatBox
-        message={message}
-        isLoading={isLoading}
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-      />
+      <ChatContainer />
     </main>
   );
 }
