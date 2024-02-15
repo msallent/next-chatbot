@@ -1,7 +1,15 @@
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 import { createUser } from '@/app/actions';
 import SendSVG from '@/assets/send.svg';
 
 export default function Home() {
+  const userId = cookies().get('userId');
+
+  if (userId?.value) {
+    redirect('/chat');
+  }
+
   return (
     <main className="h-full flex flex-col justify-center items-center p-4">
       <form
