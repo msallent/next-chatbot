@@ -30,7 +30,11 @@ datasource db {
 ```
 
 ```bash
+# Spin up database
 docker-compose up -d
+
+# Apply migrations
+npx prisma migrate dev
 ```
 
 - With Vercel Postgres
